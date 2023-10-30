@@ -44,15 +44,15 @@ public class Event {
     }
 
     //METODI PUBBLICI
-    public void makeReservation(int reservedSeat) throws IllegalArgumentException{
+    public void makeReservation(int addReservedSeat) throws IllegalArgumentException{
         if(dateCheck(date) == false) {
             throw new IllegalArgumentException("L'evento selezionato ha già avuto luogo");
-        } else if (reservedSeat <= 0) {
+        } else if (addReservedSeat <= 0) {
             throw new IllegalArgumentException("il numero inserito di posti da prenotare deve essere maggiore di 0");
-        } else if (reservedSeat + this.reservedSeat > totalSeat) {
-            throw new IllegalArgumentException("Il numero massimo di posti prenotabili è " + (totalSeat - this.reservedSeat));
+        } else if (addReservedSeat + this.reservedSeat > this.totalSeat) {
+            throw new IllegalArgumentException("Il numero massimo di posti prenotabili è " + (this.totalSeat - this.reservedSeat));
         } else {
-            this.reservedSeat += reservedSeat;
+            this.reservedSeat += addReservedSeat;
         }
     }
 
@@ -61,7 +61,9 @@ public class Event {
             throw new IllegalArgumentException("L'evento selezionato ha già avuto luogo");
         } else if (reservedSeat - cancelReservedSeat < 0) {
             throw new IllegalArgumentException("Il numero massimo di posti cancellabili è " + (reservedSeat));
-        } else {
+        } else if ( cancelReservedSeat <= 0 ){
+          throw new IllegalArgumentException("il numero inserito non può essere negativo o uguale a 0");
+        } else{
             this.reservedSeat -= cancelReservedSeat;
         }
     }
