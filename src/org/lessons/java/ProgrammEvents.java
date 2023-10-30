@@ -19,9 +19,11 @@ public class ProgrammEvents {
 
     public List<Event> getEventsOnDate(LocalDate date) {
         List<Event> filteredEvents = new ArrayList<>();
-        for (int i = 0; i < events.size(); i++) {
-            boolean ans =
+        for (Event event:events) {
+            if (event.getDate().equals(date)) {
+                filteredEvents.add(event);
+            }
         }
-        return events;
+        return filteredEvents;
     }
 }
