@@ -90,9 +90,9 @@ public class Main {
                                 exit3 = true;
                             } else {
                                 System.out.println("Scelta non valida scrivere scegliere tra 'y' o 'n'");
+                                scanner.nextLine();
                             }
                         }
-
                         exit2 = true;
                     }catch (IllegalArgumentException e) {
                         System.out.println(e);
@@ -100,18 +100,9 @@ public class Main {
                         System.out.println("perfavore inserisci un numero");
                         scanner.nextLine();
                     }
-///////////////////////////////////////////////////////////////////////////////////////////-
-
-
-
-
 
                 }
                 exit = true;
-
-
-
-
 
             } else if(choice.equals("n") || choice.equals("no")) {
                 System.out.println("Chiusura programma....");
